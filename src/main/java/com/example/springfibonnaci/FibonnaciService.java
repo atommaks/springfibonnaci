@@ -1,37 +1,9 @@
-package com.example.fibbonaci;
-
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+package com.example.springfibonnaci;
 
 import java.math.BigInteger;
 
-@SpringBootApplication
-@RestController
-public class FibbonaciApplication {
-    public static void main(String[] args) {
-        SpringApplication.run(FibbonaciApplication.class, args);
-    }
-
-    @GetMapping("/fibbonaci/{number}")
-    public String fibbonaci(@PathVariable("number") int number) {
-        if (number == 0) {
-            return BigInteger.ZERO.toString();
-        }
-
-        BigInteger[][] a = {
-                {BigInteger.ONE, BigInteger.ONE},
-                {BigInteger.ONE, BigInteger.ZERO}
-        };
-        BigInteger[][] powerOfA = matrixPowerFast(a, number - 1);
-        BigInteger nthFibonacci = powerOfA[0][0];
-
-        return nthFibonacci.toString();
-    }
-
-    private static BigInteger[][] matrixPowerFast(BigInteger[][] a, int n) {
+public class FibonnaciService {
+    public static BigInteger[][] matrixPowerFast(BigInteger[][] a, int n) {
         if (n == 0) {
             // любая матрица в нулевой степени равна единичной матрице
             return new BigInteger[][]{
