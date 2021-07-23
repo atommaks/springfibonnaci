@@ -19,7 +19,7 @@ public class FibonnaciService {
         }
     }
 
-    public static BigInteger[][] matrixMultiplication(BigInteger[][] a, BigInteger[][] b) {
+    private static BigInteger[][] matrixMultiplication(BigInteger[][] a, BigInteger[][] b) {
         // [a00 * b00 + a01 * b10, a00 * b01 + a01 * b11]
         // [a10 * b00 + a11 * b10, a10 * b01 + a11 * b11]
         return new BigInteger[][]{
