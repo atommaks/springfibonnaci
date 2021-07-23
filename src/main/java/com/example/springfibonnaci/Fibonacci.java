@@ -1,7 +1,5 @@
 package com.example.springfibonnaci;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cache.annotation.EnableCaching;
@@ -17,18 +15,11 @@ import java.math.BigInteger;
 @EnableCaching
 @EnableScheduling
 @Configuration
-@SpringBootApplication
 @RestController
-public class SpringfibonnaciApplication {
-
-    public static void main(String[] args) {
-        SpringApplication.run(SpringfibonnaciApplication.class, args);
-    }
-
+public class Fibonacci {
     @GetMapping("/fibbonaci/{number}")
     @Cacheable(value = "number-cache", key = "'Number:' + #number")
-    public String fibbonaci(@PathVariable("number") int number) throws InterruptedException {
-        Thread.sleep(5000);
+    public String fibbonaci(@PathVariable("number") int number) {
         if (number == 0) {
             return BigInteger.ZERO.toString();
         }
