@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.math.BigInteger;
 
 @RestController
-@Import({CacheConfiguration.class, SсheduleConfugiration.class})
 public class Fibonacci {
     @GetMapping("/fibbonaci/{number}")
     @Cacheable(value = "number-cache", key = "'Number:' + #number")
