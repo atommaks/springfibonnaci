@@ -2,7 +2,6 @@ package com.example.springfibonnaci;
 
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.context.annotation.Import;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,8 +30,7 @@ public class Fibonacci {
     }
 
     @CacheEvict(value = "number-cache", allEntries = true)
-    //@Scheduled(fixedDelay = 600000)
-    @Scheduled(fixedDelay = 10000)
+    @Scheduled(fixedDelay = 600000)
     public void cacheEvict() {
 
     }
