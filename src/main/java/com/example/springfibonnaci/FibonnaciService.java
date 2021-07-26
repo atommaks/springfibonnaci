@@ -3,7 +3,21 @@ package com.example.springfibonnaci;
 import java.math.BigInteger;
 
 public class FibonnaciService {
-    public static BigInteger[][] matrixPowerFast(BigInteger[][] a, int n) {
+    public static BigInteger countNthFib(int n) {
+        if (n == 0) {
+            return BigInteger.ZERO;
+        }
+
+        BigInteger[][] a = {
+                {BigInteger.ONE, BigInteger.ONE},
+                {BigInteger.ONE, BigInteger.ZERO}
+        };
+        BigInteger[][] powerOfA = matrixPowerFast(a, n - 1);
+
+        return powerOfA[0][0];
+    }
+
+    private static BigInteger[][] matrixPowerFast(BigInteger[][] a, int n) {
         if (n == 0) {
             // любая матрица в нулевой степени равна единичной матрице
             return new BigInteger[][]{

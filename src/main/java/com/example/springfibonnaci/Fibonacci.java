@@ -14,18 +14,9 @@ public class Fibonacci {
     @GetMapping("/fibbonaci/{number}")
     @Cacheable(value = "number-cache", key = "'Number:' + #number")
     public String fibbonaci(@PathVariable("number") int number) {
-        if (number == 0) {
-            return BigInteger.ZERO.toString();
-        }
+        BigInteger res = FibonnaciService.countNthFib(number);
 
-        BigInteger[][] a = {
-                {BigInteger.ONE, BigInteger.ONE},
-                {BigInteger.ONE, BigInteger.ZERO}
-        };
-        BigInteger[][] powerOfA = FibonnaciService.matrixPowerFast(a, number - 1);
-        BigInteger nthFibonacci = powerOfA[0][0];
-
-        return nthFibonacci.toString();
+        return res.toString();
     }
 
     @CacheEvict(value = "number-cache", allEntries = true)
