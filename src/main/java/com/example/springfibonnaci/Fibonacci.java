@@ -13,8 +13,7 @@ import java.math.BigInteger;
 public class Fibonacci {
     @GetMapping("/fibbonaci/{number}")
     @Cacheable(value = "number-cache", key = "'Number:' + #number")
-    public String fibbonaci(@PathVariable("number") int number) throws InterruptedException {
-        Thread.sleep(5000);
+    public String fibbonaci(@PathVariable("number") int number) {
         if (number == 0) {
             return BigInteger.ZERO.toString();
         }
