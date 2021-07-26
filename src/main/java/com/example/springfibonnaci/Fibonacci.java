@@ -3,7 +3,6 @@ package com.example.springfibonnaci;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cache.annotation.EnableCaching;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +13,6 @@ import java.math.BigInteger;
 
 @EnableCaching
 @EnableScheduling
-@Configuration
 @RestController
 public class Fibonacci {
     @GetMapping("/fibbonaci/{number}")
