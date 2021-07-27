@@ -4,7 +4,7 @@ import java.math.BigInteger;
 
 public class FibonnaciService {
     public static BigInteger countNthFib(int n) {
-        if (n <= 0) {
+        if (n == 0) {
             return BigInteger.ZERO;
         }
 
