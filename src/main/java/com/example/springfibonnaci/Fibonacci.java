@@ -14,6 +14,10 @@ public class Fibonacci {
     @GetMapping("/fibbonaci/{number}")
     @Cacheable(value = "number-cache", key = "'Number:' + #number")
     public String fibbonaci(@PathVariable("number") int number) {
+        if (number < 0) {
+            return "Please, enter n >= 0!\n";
+        }
+
         BigInteger res = FibonnaciService.countNthFib(number);
 
         return res.toString();
