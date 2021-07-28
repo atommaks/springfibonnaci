@@ -2,10 +2,12 @@ package com.example.springfibonnaci;
 
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.http.HttpStatus;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.math.BigInteger;
 
@@ -15,7 +17,7 @@ public class Fibonacci {
     @Cacheable(value = "number-cache", key = "'Number:' + #number")
     public String fibbonaci(@PathVariable("number") int number) {
         if (number < 0) {
-            return "Please, enter n >= 0!\n";
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Please, enter n >= 0!\n");
         }
 
         BigInteger res = FibonnaciService.countNthFib(number);
