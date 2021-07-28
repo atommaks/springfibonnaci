@@ -5,7 +5,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Import;
 
 @SpringBootApplication
-@Import({CacheConfiguration.class, SсheduleConfugiration.class})
+@Import({CacheConfiguration.class,
+        SсheduleConfugiration.class,
+        CloudServerConfiguration.class
+})
 public class FibonacciApplication {
     public static void main(String[] args) {
         SpringApplication.run(FibonacciApplication.class, args);
