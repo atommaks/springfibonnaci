@@ -13,17 +13,22 @@ repositories {
 }
 
 ext {
-    set('springCloudVersion', "2020.0.0")
+    set('springCloudVersion', "Hoxton.SR8")
 }
 
 dependencies {
+    //compile 'org.springframework.cloud:spring-cloud-starter-config'
+    //compile 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     implementation 'org.junit.jupiter:junit-jupiter:5.7.2'
     implementation 'org.springframework.boot:spring-boot-starter-cache:2.5.2'
     implementation 'org.springframework.cloud:spring-cloud-config-server'
+    //implementation 'org.springframework.boot:spring-boot-starter-parent:2.2.2.RELEASE'
 }
+
+apply plugin: "io.spring.dependency-management"
 
 dependencyManagement {
     imports {
