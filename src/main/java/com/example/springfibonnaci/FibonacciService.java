@@ -2,7 +2,7 @@ package com.example.springfibonnaci;
 
 import java.math.BigInteger;
 
-public class FibonnaciService {
+public class FibonacciService {
     public static BigInteger countNthFib(int n) {
         if (n == 0) {
             return BigInteger.ZERO;
