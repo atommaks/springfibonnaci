@@ -8,11 +8,11 @@ import javax.naming.ConfigurationException;
 
 @RefreshScope
 public class ServiceConfiguration {
-    @Value("${fibonacci.mode: Default mode}")
-    private String mode;
+    @Value("${text.mode: Default mode}")
+    private static String mode;
 
     @Bean
-    Service fibonacciService() throws ConfigurationException {
+    public static Service fibonacciService() throws ConfigurationException {
         if ("prod".equals(mode)) {
             return new FibonacciProdService();
         } else if ("tech".equals(mode)) {
