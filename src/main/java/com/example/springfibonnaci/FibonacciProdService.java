@@ -1,11 +1,20 @@
 package com.example.springfibonnaci;
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+
 import java.math.BigInteger;
 
-public class FibonnaciService {
-    public static BigInteger countNthFib(int n) {
+@org.springframework.stereotype.Service
+@ConditionalOnProperty(
+        value="text.mode",
+        havingValue = "prod",
+        matchIfMissing = true
+)
+public class FibonacciProdService implements com.example.springfibonnaci.Service {
+
+    public String countNthFib(int n) {
         if (n == 0) {
-            return BigInteger.ZERO;
+            return BigInteger.ZERO.toString();
         }
 
         BigInteger[][] a = {
@@ -14,8 +23,9 @@ public class FibonnaciService {
         };
         BigInteger[][] powerOfA = matrixPowerFast(a, n - 1);
 
-        return powerOfA[0][0];
+        return powerOfA[0][0].toString();
     }
+
 
     private static BigInteger[][] matrixPowerFast(BigInteger[][] a, int n) {
         if (n == 0) {
