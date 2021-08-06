@@ -1,12 +1,16 @@
 package com.example.springfibonnaci;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 
-@RefreshScope
-public class FibonacciTechService implements Service {
+@org.springframework.stereotype.Service
+@ConditionalOnProperty(
+        value="text.mode",
+        havingValue = "tech"
+)
+public class FibonacciTechService implements com.example.springfibonnaci.Service {
     @Value("${text.copyright: Default Copyright}")
-    private static String copyright;
+    private String copyright;
 
     public String countNthFib(int n) {
         return copyright;
