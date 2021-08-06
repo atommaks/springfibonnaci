@@ -1,8 +1,16 @@
 package com.example.springfibonnaci;
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+
 import java.math.BigInteger;
 
-public class FibonacciProdService implements Service {
+@org.springframework.stereotype.Service
+@ConditionalOnProperty(
+        value="text.mode",
+        havingValue = "prod",
+        matchIfMissing = true
+)
+public class FibonacciProdService implements com.example.springfibonnaci.Service {
 
     public String countNthFib(int n) {
         if (n == 0) {
