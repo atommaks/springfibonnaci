@@ -2,10 +2,11 @@ package com.example.springfibonnaci;
 
 import java.math.BigInteger;
 
-public class FibonacciService {
-    public static BigInteger countNthFib(int n) {
+public class FibonacciProdService implements Service {
+
+    public String countNthFib(int n) {
         if (n == 0) {
-            return BigInteger.ZERO;
+            return BigInteger.ZERO.toString();
         }
 
         BigInteger[][] a = {
@@ -14,8 +15,9 @@ public class FibonacciService {
         };
         BigInteger[][] powerOfA = matrixPowerFast(a, n - 1);
 
-        return powerOfA[0][0];
+        return powerOfA[0][0].toString();
     }
+
 
     private static BigInteger[][] matrixPowerFast(BigInteger[][] a, int n) {
         if (n == 0) {
